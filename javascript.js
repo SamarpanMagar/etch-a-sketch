@@ -12,6 +12,7 @@ makeGridButton.addEventListener("click", () => {
 let rows = 16;
 let columns = 16;
 let getSizeStatus = true;
+makeGrid();
 
 // Get Size (rows and columns)
 function getSize () {
@@ -56,10 +57,48 @@ function clearGrid () {
     gridContainer.innerHTML = ``;
 }
 
+// Hover to colors
 function toBlack (event) {
     event.target.style.backgroundColor = `black`;
 }
 
-function toWhite (event) {
-    event.target.style.backgroundColor = ``;
+function toRandom (event) {
+    let r = Math.floor(Math.random() * 255)
+    let g = Math.floor(Math.random() * 255)
+    let b = Math.floor(Math.random() * 255)
+    let a = 1;
+    event.target.style.backgroundColor = `rgba(${r},${g},${b},${a})`
+}
+
+
+
+// Extra functionalities //
+
+// Randomize DOM button and variables
+let randomStatus = false;
+let randomButton = document.querySelector('.randomButton');
+randomButton.addEventListener("click", () => {
+    if (!randomStatus) {
+        randomColors();
+        randomStatus = true;
+    }
+    else {
+        randomColorsRemove();
+        randomStatus = false;
+    }
+});
+
+// Randomize Colors
+function randomColors () {
+    let gridItems = document.querySelectorAll('.grid-item');
+    for (item of gridItems) {
+        item.addEventListener("mouseover", toRandom);
+    }
+}
+
+function randomColorsRemove () {
+    let gridItems = document.querySelectorAll('.grid-item');
+    for (item of gridItems) {
+        item.removeEventListener("mouseover", toRandom);
+    }
 }
