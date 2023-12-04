@@ -4,3 +4,40 @@
     margin: 0;
     box-sizing: border-box;
 }
+
+body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.grid-container {
+    width: 480px;
+    height: 480px;
+    display: flex;
+    flex-wrap: wrap;
+    overflow: hidden;
+    flex-direction: column;
+}
+
+.grid-row {
+    display: flex;
+    flex-grow: 1;
+    flex-direction: row;
+}
+
+.grid-item {
+    border: 1px solid black;
+    flex-grow: 1;
+}
+
+.makeGridButton {
+    padding: 0.5rem 1rem;
+    color: #fff;
+    background-color: #000;
+    border-radius: 6px;
+    cursor: pointer;
+}
